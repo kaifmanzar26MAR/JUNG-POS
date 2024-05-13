@@ -7,10 +7,10 @@ const Main = () => {
   return (
       <div>
     {/* <Navbar /> */}
-    <SearchBar/>
-      <div className='bg-[#f0f2f5] flex'>
+    {/* <SearchBar/> */}
+      <div className='bg-[#f0f2f5] '>
        {/* <div className='h-screen py-3 sticky left-0 top-0 '> <Sidebar /></div> */}
-        <div className='p-5 flex flex-1'><Outlet /></div>
+        <div className=''><Outlet /></div>
       </div>
     </div>
     
