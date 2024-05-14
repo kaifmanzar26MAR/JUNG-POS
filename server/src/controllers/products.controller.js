@@ -1,10 +1,10 @@
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
-import { CD } from "../models/cd.product.model.js";
+import { Product } from "../models/products.model.js";
 
 const getAllCDProducts = asyncHandler(async (req, res) => {
-  const cdProducts = await CD.find();
+  const cdProducts = await Product.find();
   if (!cdProducts) {
     throw new ApiError(
       500,
@@ -20,7 +20,7 @@ const getAllCDProducts = asyncHandler(async (req, res) => {
 const addCDProduct = asyncHandler(async (req, res) => {
   const { Name, Category, Image, Quantity, AddedDate } = req.body;
 
-  const Cdinstance = await CD.create({
+  const Cdinstance = await Product.create({
     Name,
     Category,
     Image,
@@ -40,7 +40,7 @@ const addCDProduct = asyncHandler(async (req, res) => {
 const searchProduct = asyncHandler(async (req, res) => {
   const { inputText } = req.body;
   // console.log(inputText, req.body);
-  const allprodcuts= await CD.find();
+  const allprodcuts= await Product.find();
   const products =  allprodcuts.filter((product) => {
     const productName = product?.Name?.toString().toLowerCase();
     const category = product?.Category?.toString().toLowerCase();
@@ -61,7 +61,7 @@ const getProductById= asyncHandler(async(req,res)=>{
 
   console.log(_id);
 
-  const product= await CD.findOne({_id});
+  const product= await Product.findOne({_id});
 
   if(!product) throw new ApiError(500, "No product Found!!")
 

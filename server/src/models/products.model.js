@@ -1,14 +1,15 @@
 import mongoose,{Schema} from "mongoose";
 
-const cdProdcutSchema=new Schema({
+const prodcutSchema=new Schema({
     Name:{
         type:String,
-        required:true
+        required:true,
+        default:"misc"
     },
     Category:{
         type:String,
         required:true,
-        default:"Other"
+        default:"misc"
     },
     Image:{
         type:String,
@@ -24,8 +25,22 @@ const cdProdcutSchema=new Schema({
         type:Number,
         requred:true,
         default:0
+    },
+    Added_by:{
+        type:Schema.Types.ObjectId,
+        required:true,
+    },
+    Series:{
+        type:String,
+        required:true,
+        default:"misc"
+    },
+    Color:{
+        type:String,
+        required:true,
+        default:"misc"
     }
 },{timestamps:true})
 
 
-export const CD = mongoose.model("CD", cdProdcutSchema);
+export const Product = mongoose.model("Product", prodcutSchema);

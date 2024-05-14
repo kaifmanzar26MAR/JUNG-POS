@@ -8,7 +8,6 @@ function containsHTMLTags(args) {
   const htmlRegex = /<[^>]*>/; // Regular expression to match HTML tags
   return htmlRegex.test(args);
 }
-
 const registerUser = asyncHandler(async (req, res) => {
   //get user details form frontend
   const { username, email, fullname, password } = req.body;

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { addCDProduct, getAllCDProducts, getProductById, searchProduct } from "../controllers/cd.product.controller.js";
+import { addCDProduct, getAllCDProducts, getProductById, searchProduct } from "../controllers/products.controller.js";
 
 const router = Router();
 router.route("/getcdproducts").get(getAllCDProducts);
