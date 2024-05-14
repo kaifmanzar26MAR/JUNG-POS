@@ -55,4 +55,17 @@ const searchProduct = asyncHandler(async (req, res) => {
   return res.status(200).json(new ApiResponse(201, products, "Found some products!!"))
 });
 
-export { getAllCDProducts, addCDProduct, searchProduct };
+
+const getProductById= asyncHandler(async(req,res)=>{
+  const _id= req.params
+
+  console.log(_id);
+
+  const product= await CD.findOne({_id});
+
+  if(!product) throw new ApiError(500, "No product Found!!")
+
+  return res.status(200).json(new ApiResponse(201, product, "Got the prodcut"))
+})
+
+export { getAllCDProducts, addCDProduct, searchProduct, getProductById };

@@ -75,7 +75,7 @@ const Home = () => {
         {
             resustantData?.map((e)=>{
                 return(
-                  <Link to={''}>
+                  <Link to={`/product/${e._id}`}>
                     <div className="w-full bg-white rounded-sm flex justify-around items-center p-2 border-2 cursor-pointer hover:bg-slate-100">
                         <img src={e.Image} alt="img" className="w-12 h-12 object-cover"/>
                         <p className="font-semibold ">{e.Name}</p>

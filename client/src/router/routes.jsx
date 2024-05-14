@@ -3,6 +3,7 @@ import Login from "../pages/Login.jsx";
 import Home from "../pages/Home.jsx";
 import Main from '../layouts/Main.jsx'
 import Plain from "../layouts/Plain.jsx";
+import ProdcutView from "../pages/ProdcutView.jsx";
 
 const router = createBrowserRouter([
     {
@@ -12,6 +13,10 @@ const router = createBrowserRouter([
         {
           path: "/",
           element: <Home />,
+        },
+        {
+          path:`/product/:_id`,
+          element:<ProdcutView/>
         }
         
       ],
