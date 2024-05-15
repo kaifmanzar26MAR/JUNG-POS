@@ -2,6 +2,7 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { Product } from "../models/products.model.js";
+import mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2";
 
 const getAllCDProducts = asyncHandler(async (req, res) => {
   const cdProducts = await Product.find();
@@ -68,4 +69,93 @@ const getProductById= asyncHandler(async(req,res)=>{
   return res.status(200).json(new ApiResponse(201, product, "Got the prodcut"))
 })
 
-export { getAllCDProducts, addCDProduct, searchProduct, getProductById };
+
+const getAllSeries= asyncHandler(async(req,res)=>{
+  const uniqueSeries= await Product.aggregate([
+    {
+      $group: {
+        _id: null,
+        "allSeries":{$addToSet:"$Series"}
+      },
+    },
+  ])
+
+  if(!uniqueSeries) throw new ApiError(500, "Something went worng in getting series!!")
+
+    return res.status(200).json(new ApiResponse(201, uniqueSeries[0].allSeries, "Got All Series!!"))
+})
+
+const getAllCategoriesOfASereis= asyncHandler(async(req,res)=>{
+  const {series}=req.body;
+
+  if(series==='' || !series) throw new ApiError(500, "Series Required!!")
+
+  console.log(series);
+
+
+  const allCategories= await Product.aggregate([
+    {
+      $match: {
+        Series:series
+      }
+    },
+    {
+      $group:{
+        _id:null,
+        "cat":{$addToSet:"$Category"}
+      }
+    }
+  ]);
+
+  if(!allCategories) throw new ApiError(500, "Something went wrong in fetching categories!!")
+
+  return res.status(200).json(new ApiResponse(201, allCategories[0].cat, `Got All Categories of ${series}!!`))
+})
+
+
+const getAllColors= asyncHandler(async(req,res)=>{
+  const {series, category} = req.body;
+
+
+  if([series, category].some(fields=>fields?.trim()==="")){
+    throw new ApiError(500, "Sereis and Category Required!!")
+  }
+
+  const allColors= await Product.aggregate([
+    {
+      $match:{
+        Series:series,
+        Category:category
+      }
+    },
+    {
+      $group:{
+        _id:null,
+        "allColors":{$addToSet: "$Color"}
+      }
+    }
+  ])
+
+  if(!allColors) throw new ApiError(500, "Something went wrong in fetching colors!!")
+
+  return res.status(200).json(new ApiResponse(201, allColors[0].allColors, "Got All Colors!!"))
+})
+
+
+const updateNullCategoryToXYZ = async (req,res) => {
+  try {
+    // Update documents where Category is null to "xyz"
+    const result = await Product.deleteMany(
+      { Series: "AL" }
+    );
+
+    console.log(`${result} documents updated.`);
+    return res.status(200).json(result)
+  } catch (error) {
+    // Handle any errors
+    console.error(error);
+    return new ApiError(500, "not updated@!")
+  }
+};
+
+export { getAllCDProducts, addCDProduct, searchProduct, getProductById,getAllSeries, getAllCategoriesOfASereis, updateNullCategoryToXYZ, getAllColors };
