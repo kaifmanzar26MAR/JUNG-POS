@@ -4,22 +4,39 @@ import Home from "../pages/Home.jsx";
 import Main from '../layouts/Main.jsx'
 import Plain from "../layouts/Plain.jsx";
 import ProdcutView from "../pages/ProdcutView.jsx";
+import Level1 from "../pages/Level1.jsx";
+import Level2 from "../pages/Level2.jsx";
+import Level3 from "../pages/Level3.jsx";
+import Level4 from "../pages/Level4.jsx";
 
 const router = createBrowserRouter([
     {
       path: "/",
       element: <Main />,
       children: [
-        {
-          path: "/",
-          element: <Home />,
-        },
-        {
-          path:`/product/:_id`,
-          element:<ProdcutView/>
-        }
-        
+        { path: "/", element: <Home />},
+        { path:`/product/:_id`, element:<ProdcutView/>}
       ],
+    },
+    {
+      path: "/level1",
+      element: <Level1 />,
+    },
+    {
+      path: "/level1/level2",
+      element: <Level2 />,
+    },
+    {
+      path: "/level1/level2/level3",
+      element: <Level3 />,
+    },
+    {
+      path: "/level1/level2/level3/level4",
+      element: <Level4 />,
+    },
+    {
+      path: "/level1/level2/level3/level4/product",
+      element: <ProdcutView />,
     },
     {
       path: "/welcome",
