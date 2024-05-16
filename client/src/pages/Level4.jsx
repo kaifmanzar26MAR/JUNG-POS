@@ -43,7 +43,7 @@ const Level4 = () => {
       <div className='flex flex-col items-center justify-center text-white text-2xl font-bold'>
         {products?.map((item, index) => {
           return (
-            <Link to={`/level1/${sereis}/level2/${category}/level3/${color}/level4/${item._id}`} className='bg-slate-900 p-3 m-2 w-full text-center'><div key={index._id}  onClick={handleOption}>
+            <Link to={`/select/${sereis}/${category}/${color}/${item._id}`} className='bg-slate-900 p-3 m-2 w-full text-center'><div key={index._id}  onClick={handleOption}>
               {item.Name}
             </div></Link>
           ) 

@@ -44,7 +44,7 @@ const Level3 = () => {
       <div className='flex flex-col items-center justify-center text-white text-2xl font-bold'>
         {color?.map((item, index) => {
           return (
-            <Link to={`/level1/${sereis}/level2/${category}/level3/${item}/level4`} className='bg-slate-900 p-3 m-2 w-full text-center'><div key={index}  onClick={handleOption}>
+            <Link to={`/select/${sereis}/${category}/${item}`} className='bg-slate-900 p-3 m-2 w-full text-center'><div key={index}  onClick={handleOption}>
               {item}
             </div></Link>
           ) 

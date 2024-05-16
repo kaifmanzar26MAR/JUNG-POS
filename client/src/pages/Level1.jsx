@@ -32,7 +32,7 @@ const Level1 = () => {
         <div className='flex flex-col items-center justify-center text-white text-2xl font-bold'>
           {series?.map((item, index) => {
             return (
-              <Link to={`/level1/${item}/level2`} className='bg-slate-900 p-3 m-2 w-full text-center'><div key={index}  onClick={handleOption}>
+              <Link to={`/select/${item}`} className='bg-slate-900 p-3 m-2 w-full text-center'><div key={index}  onClick={handleOption}>
                 {item}
               </div></Link>
             )

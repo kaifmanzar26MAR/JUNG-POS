@@ -101,7 +101,7 @@ const Home = () => {
       {text === "" ? <p className="text-white text-4xl">OR</p> : ""}
       {text === "" ? (
         
-        <Link to='/level1' className="btn w-40 btn-success">Select Product</Link>
+        <Link to='/select' className="btn w-40 btn-success">Select Product</Link>
         
       ) : (
         ""

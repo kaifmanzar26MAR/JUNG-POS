@@ -47,7 +47,7 @@ const Level2 = () => {
       
         <div className="flex flex-col items-center justify-center text-white text-2xl font-bold">
           {categories.map((item, index) => {
-            return (<Link to={`/level1/${sereis}/level2/${item}/level3`} className="bg-slate-900 p-3 m-2 w-full text-center">
+            return (<Link to={`/select/${sereis}/${item}`} className="bg-slate-900 p-3 m-2 w-full text-center">
               <div
                 key={index}
                

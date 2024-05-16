@@ -19,23 +19,23 @@ const router = createBrowserRouter([
       ],
     },
     {
-      path: "/level1",
+      path: "/select",
       element: <Level1 />,
     },
     {
-      path: "/level1/:sereis/level2",
+      path: "/select/:sereis",
       element: <Level2 />,
     },
     {
-      path: "/level1/:sereis/level2/:category/level3",
+      path: "/select/:sereis/:category",
       element: <Level3 />,
     },
     {
-      path: "/level1/:sereis/level2/:category/level3/:color/level4",
+      path: "/select/:sereis/:category/:color",
       element: <Level4 />,
     },
     {
-      path: "/level1/:sereis/level2/:category/level3/:color/level4/:_id",
+      path: "/select/:sereis/:category/:color/:_id",
       element: <ProdcutView />,
     },
     {
