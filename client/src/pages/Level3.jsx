@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
+import TimeLine from '../components/TimeLine';
 
 
 const classification = ['KNX', 'INSERT', 'LS', 'A/AC/AF/A5', 'CD', 'ES', 'ME', 'AL', 'MISC'];
@@ -38,9 +39,12 @@ const Level3 = () => {
     fetchSeries();
   }, [sereis,category]);
   return (
-    <div className='bg-slate-800 min-h-screen p-2 flex items-center justify-center'>
-    
-
+    <div className="bg-slate-800 min-h-screen p-2 flex flex-col items-center justify-start">
+      <div className="flex w-[60vw] justify-center items-center">
+        <TimeLine title={sereis} isLast={false} />
+        <TimeLine title={category} isLast={false} />
+        <TimeLine title={"Select Color"} isLast={true} />
+      </div>
       <div className='flex flex-col items-center justify-center text-white text-2xl font-bold'>
         {color?.map((item, index) => {
           return (

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import TimeLine from "../components/TimeLine";
 
 const classification = [
   "KNX",
@@ -43,8 +44,11 @@ const Level2 = () => {
     fetchSeries();
   }, [sereis]);
   return (
-    <div className="bg-slate-800 min-h-screen p-2 flex items-center justify-center">
-      
+    <div className="bg-slate-800 min-h-screen p-2 flex flex-col items-center justify-start">
+      <div className="flex w-[60vw] justify-center items-center ">
+        <TimeLine title={sereis} isLast={false} />
+        <TimeLine title={"Select Category"} isLast={true} />
+      </div>
         <div className="flex flex-col items-center justify-center text-white text-2xl font-bold">
           {categories.map((item, index) => {
             return (<Link to={`/select/${sereis}/${item}`} className="bg-slate-900 p-3 m-2 w-full text-center">
