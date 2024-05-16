@@ -1,3 +1,4 @@
+
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
@@ -24,16 +25,16 @@ const ProdcutView = () => {
         fetchProdcutData();
     },[_id])
   return (
-    <div className='w-full h-screen flex items-center justify-center flex-col gap-5'>
+    <div className='bg-slate-800 w-full h-screen flex items-center justify-center flex-col gap-5'>
         <img src={product.Image} alt=""  className='w-40 aspect-square border-2 border-gray-500  rounded-xl'/>
 
-        <div className='flex gap-2 justify-center items-center p-2 border-2 border-gray-500 rounded-lg'>
+        <div className='flex gap-2 justify-center items-center p-2 border-2 border-gray-500 rounded-lg text-white'>
             <p>Current Stock :</p>
             <p>{product.Quantity}</p>
             <button className='btn btn-success'>Edit</button>
         </div>
 
-        <div  className='p-5 border-2 border-green-300 rounded-lg w-80'>
+        <div  className='p-5 border-2 border-green-300 rounded-lg w-80 text-white'>
             <p>Name : {product.Name}</p>
             <p>Category : {product.Category}</p>
             <p>Color : {product.Category ? product.Category : "Not Def"}</p>
@@ -44,3 +45,4 @@ const ProdcutView = () => {
 }
 
 export default ProdcutView
+
