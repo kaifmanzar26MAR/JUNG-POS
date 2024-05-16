@@ -85,7 +85,7 @@ const getAllSeries= asyncHandler(async(req,res)=>{
     return res.status(200).json(new ApiResponse(201, uniqueSeries[0].allSeries, "Got All Series!!"))
 })
 
-const getAllCategoriesOfASereis= asyncHandler(async(req,res)=>{
+const getAllCategoriesOfAseries= asyncHandler(async(req,res)=>{
   const {series}=req.body;
 
   if(series==='' || !series) throw new ApiError(500, "Series Required!!")
@@ -118,7 +118,7 @@ const getAllColors= asyncHandler(async(req,res)=>{
 
 
   if([series, category].some(fields=>fields?.trim()==="")){
-    throw new ApiError(500, "Sereis and Category Required!!")
+    throw new ApiError(500, "series and Category Required!!")
   }
 
   const allColors= await Product.aggregate([
@@ -179,4 +179,4 @@ const getTheFinalProductList= asyncHandler(async(req,res)=>{
   return res.status(200).json(new ApiResponse(201, productList,"Got the products Successfully!!"))
 })
 
-export { getAllCDProducts, addCDProduct, searchProduct, getProductById,getAllSeries, getAllCategoriesOfASereis, updateNullCategoryToXYZ, getAllColors ,getTheFinalProductList};
+export { getAllCDProducts, addCDProduct, searchProduct, getProductById,getAllSeries, getAllCategoriesOfAseries, updateNullCategoryToXYZ, getAllColors ,getTheFinalProductList};
