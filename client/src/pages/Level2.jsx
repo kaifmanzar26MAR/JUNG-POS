@@ -1,9 +1,8 @@
-
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import TimeLine from "../components/TimeLine";
-
+import { IoArrowBackSharp } from "react-icons/io5";
 
 const Level2 = () => {
   const { sereis } = useParams();
@@ -37,6 +36,9 @@ const Level2 = () => {
 
   return (
     <div className="bg-slate-800 min-h-screen p-2 flex flex-col items-center justify-start">
+      <Link to="/select" className="text-white absolute start-4 top-5">
+        <IoArrowBackSharp size={35} />
+      </Link>
       <div className="flex w-[60vw] justify-center items-center p-5">
         <TimeLine title={sereis} isLast={false} />
         <TimeLine title={"Select Category"} isLast={true} />
@@ -61,4 +63,3 @@ const Level2 = () => {
 };
 
 export default Level2;
-
