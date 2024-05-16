@@ -5,8 +5,8 @@ import TimeLine from "../components/TimeLine";
 import { IoArrowBackSharp } from "react-icons/io5";
 
 const Level4 = () => {
-  const { sereis, category, color } = useParams();
-  console.log(sereis, category, color);
+  const { series, category, color } = useParams();
+  console.log(series, category, color);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -14,7 +14,7 @@ const Level4 = () => {
       try {
         const res = await axios.post(
           "http://localhost:9000/api/jung/v1/products/getfinalproductlist",
-          { series: sereis, category, color },
+          { series: series, category, color },
           { withCredentials: true }
         );
 
@@ -27,14 +27,14 @@ const Level4 = () => {
     };
 
     fetchSeries();
-  }, [sereis, category, color]);
+  }, [series, category, color]);
   return (
     <div className="bg-slate-800 min-h-screen p-2 flex flex-col items-center justify-start">
-      <Link to="/select/LS/FRAME" className="text-white absolute start-4 top-5">
+      <Link to={`/select/${series}/${category}`} className="text-white absolute start-4 top-5">
         <IoArrowBackSharp size={35} />
       </Link>
       <div className="flex w-[60vw] justify-center items-center p-5">
-        <TimeLine title={sereis} isLast={false} />
+        <TimeLine title={series} isLast={false} />
         <TimeLine title={category} isLast={false} />
         <TimeLine title={color} isLast={false} />
         <TimeLine title={"Select Prodcut"} isLast={true} />
@@ -43,7 +43,7 @@ const Level4 = () => {
         {products?.map((item, index) => {
           return (
             <Link
-              to={`/select/${sereis}/${category}/${color}/${item._id}`}
+              to={`/select/${series}/${category}/${color}/${item._id}`}
               className="bg-slate-900 p-3 m-2 w-full text-center"
             >
               <div key={index._id}>{item.Name}</div>

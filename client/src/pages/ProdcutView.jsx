@@ -4,7 +4,7 @@ import { IoArrowBackSharp } from "react-icons/io5";
 import { Link, useParams } from "react-router-dom";
 
 const ProdcutView = () => {
-  const { _id } = useParams();
+  const { _id, series, category, color } = useParams();
   console.log(_id);
 
   const [product, setProdcut] = useState({});
@@ -28,7 +28,7 @@ const ProdcutView = () => {
   }, [_id]);
   return (
     <div className="bg-slate-800 w-full h-screen flex items-center justify-center flex-col gap-5">
-      <Link to="/select/LS/FRAME/red" className="text-white absolute start-4 top-5">
+      <Link to={ series && category && color ? `/select/${series}/${category}/${color}` : '/'} className="text-white absolute start-4 top-5">
         <IoArrowBackSharp size={35} />
       </Link>
       <img

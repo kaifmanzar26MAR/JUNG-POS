@@ -5,8 +5,8 @@ import TimeLine from "../components/TimeLine";
 import { IoArrowBackSharp } from "react-icons/io5";
 
 const Level2 = () => {
-  const { sereis } = useParams();
-  console.log(sereis);
+  const { series } = useParams();
+  console.log(series);
 
   const [categories, setCategories] = useState([]);
 
@@ -19,7 +19,7 @@ const Level2 = () => {
       try {
         const res = await axios.post(
           "http://localhost:9000/api/jung/v1/products/getallcategories",
-          { series: sereis },
+          { series: series },
           { withCredentials: true }
         );
 
@@ -32,7 +32,7 @@ const Level2 = () => {
     };
 
     fetchSeries();
-  }, [sereis]);
+  }, [series]);
 
   return (
     <div className="bg-slate-800 min-h-screen p-2 flex flex-col items-center justify-start">
@@ -40,7 +40,7 @@ const Level2 = () => {
         <IoArrowBackSharp size={35} />
       </Link>
       <div className="flex w-[60vw] justify-center items-center p-5">
-        <TimeLine title={sereis} isLast={false} />
+        <TimeLine title={series} isLast={false} />
         <TimeLine title={"Select Category"} isLast={true} />
       </div>
 
@@ -48,7 +48,7 @@ const Level2 = () => {
         {categories.map((item, index) => {
           return (
             <Link
-              to={`/select/${sereis}/${item}`}
+              to={`/select/${series}/${item}`}
               className="bg-slate-900 p-3 m-2 w-full text-center"
             >
               <div key={index} onClick={handleOption}>
