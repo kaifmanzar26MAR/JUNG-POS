@@ -5,7 +5,7 @@ const TimeLine = ( {title, isLast}) => {
     
   return (
     
-      <div style={{clipPath:"polygon(89% 0, 100% 54%, 90% 100%, 0% 100%, 10% 53%, 0% 0%)"}} className={`${isLast ? "bg-red-500" :"bg-blue-500"} h-10 w-60 flex items-center justify-center`}>
+      <div style={{clipPath:"polygon(89% 0, 100% 54%, 90% 100%, 0% 100%, 10% 53%, 0% 0%)"}} className={`${isLast ? "bg-red-500" :"bg-blue-500"} h-10 w-60 flex items-center justify-center font-bold text-white`}>
         {title}
       </div>
   )
