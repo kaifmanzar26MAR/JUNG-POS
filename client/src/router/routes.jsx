@@ -35,7 +35,7 @@ const router = createBrowserRouter([
       element: <Level4 />,
     },
     {
-      path: "/level1/:sereis/level2/:category/level3/:color/level4/:_id/",
+      path: "/level1/:sereis/level2/:category/level3/:color/level4/:_id",
       element: <ProdcutView />,
     },
     {

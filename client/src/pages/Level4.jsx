@@ -22,7 +22,7 @@ const Level4 = () => {
     const fetchSeries = async () => {
       try {
         const res = await axios.post(
-          "http://localhost:9000/api/jung/v1/products/getallcolors",{series:sereis,category,color},
+          "http://localhost:9000/api/jung/v1/products/getfinalproductlist",{series:sereis,category,color},
           { withCredentials: true }
         );
 
@@ -43,8 +43,8 @@ const Level4 = () => {
       <div className='flex flex-col items-center justify-center text-white text-2xl font-bold'>
         {products?.map((item, index) => {
           return (
-            <Link to={`/level1/${sereis}/level2/${category}/level3/${item}/level4`} className='bg-slate-900 p-3 m-2 w-full text-center'><div key={index}  onClick={handleOption}>
-              {item}
+            <Link to={`/level1/${sereis}/level2/${category}/level3/${color}/level4/${item._id}`} className='bg-slate-900 p-3 m-2 w-full text-center'><div key={index._id}  onClick={handleOption}>
+              {item.Name}
             </div></Link>
           ) 
         })}

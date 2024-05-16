@@ -158,4 +158,25 @@ const updateNullCategoryToXYZ = async (req,res) => {
   }
 };
 
-export { getAllCDProducts, addCDProduct, searchProduct, getProductById,getAllSeries, getAllCategoriesOfASereis, updateNullCategoryToXYZ, getAllColors };
+
+const getTheFinalProductList= asyncHandler(async(req,res)=>{
+
+  const {series, category, color}= req.body;
+
+  if([series, category, color].some(fields=> fields.trim()==='')){
+    throw new ApiError(500, "All fields are required!!")
+  }
+  const productList= await Product.aggregate([
+    {
+      $match: {
+        Series: series,
+        Category:category,
+        Color:color
+      },
+    },
+  ])
+
+  return res.status(200).json(new ApiResponse(201, productList,"Got the products Successfully!!"))
+})
+
+export { getAllCDProducts, addCDProduct, searchProduct, getProductById,getAllSeries, getAllCategoriesOfASereis, updateNullCategoryToXYZ, getAllColors ,getTheFinalProductList};
