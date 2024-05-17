@@ -36,7 +36,7 @@ const Home = () => {
     if (text === "") {
       setResustantData([]);
       setStyle("center");
-      document.getElementById("input").style.width = "200px";
+      document.getElementById("input").style.width = "400px";
       document.getElementById("cont").style.justifyContent = "center";
       return;
     } else {
@@ -57,7 +57,7 @@ const Home = () => {
   }, [text]);
   return (
     <div
-      className={`h-screen bg-slate-800 w-full flex flex-col gap-10 items-center `}
+      className={`h-screen bg-[#F9FDFF] w-full flex flex-col gap-10 items-center text-4xl`}
       id="cont"
       onClick={() => setText("")}
     >
@@ -67,9 +67,9 @@ const Home = () => {
           type="text"
           value={text}
           onChange={(e) => setText(e.target.value)}
-          className="transition-all duration-500 m-5 p-2"
+          className="transition-all duration-500 m-5 p-2 border border-[#1849A8] rounded-lg w-60 text-black text-center"
           id="input"
-          placeholder="search product"
+          placeholder="Search Product"
         />
       }
       {text != "" ? (
@@ -97,12 +97,18 @@ const Home = () => {
         ""
       )}
 
-
-      {text === "" ? <p className="text-white text-4xl">OR</p> : ""}
       {text === "" ? (
-        
-        <Link to='/select' className="btn w-40 btn-success">Select Product</Link>
-        
+        <p className="text-[#1470EF] font-bold text-4xl">OR</p>
+      ) : (
+        ""
+      )}
+      {text === "" ? (
+        <Link
+          to="/select"
+          className="btn w-[400px] bg-[#1849A8] text-white text-4xl h-[65px]"
+        >
+          Select Product
+        </Link>
       ) : (
         ""
       )}

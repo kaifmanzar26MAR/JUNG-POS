@@ -29,9 +29,12 @@ const Level4 = () => {
     fetchSeries();
   }, [series, category, color]);
   return (
-    <div className="bg-slate-800 min-h-screen p-2 flex flex-col items-center justify-start">
-      <Link to={`/select/${series}/${category}`} className="text-white absolute start-4 top-5">
-        <IoArrowBackSharp size={35} />
+    <div className="bg-[#F9FDFF] min-h-screen p-2 flex flex-col items-center justify-start">
+      <Link
+        to={`/select/${series}/${category}`}
+        className="text-white absolute start-4 top-5"
+      >
+        <IoArrowBackSharp size={35} className="text-[#175CD3]" />
       </Link>
       <div className="flex w-[60vw] justify-center items-center p-5">
         <TimeLine title={series} isLast={false} />
@@ -44,7 +47,7 @@ const Level4 = () => {
           return (
             <Link
               to={`/select/${series}/${category}/${color}/${item._id}`}
-              className="bg-slate-900 p-3 m-2 w-full text-center"
+              className="rounded-md bg-[#1849A8] p-3 m-2 w-full text-center"
             >
               <div key={index._id}>{item.Name}</div>
             </Link>
