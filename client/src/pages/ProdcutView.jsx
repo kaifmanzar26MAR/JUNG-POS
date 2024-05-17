@@ -27,23 +27,30 @@ const ProdcutView = () => {
     fetchProdcutData();
   }, [_id]);
   return (
-    <div className="bg-slate-800 w-full h-screen flex items-center justify-center flex-col gap-5">
-      <Link to={ series && category && color ? `/select/${series}/${category}/${color}` : '/'} className="text-white absolute start-4 top-5">
-        <IoArrowBackSharp size={35} />
+    <div className="bg-[#F9FDFF] w-full h-screen flex items-center justify-center flex-col gap-5">
+      <Link
+        to={
+          series && category && color
+            ? `/select/${series}/${category}/${color}`
+            : "/"
+        }
+        className="text-black absolute start-4 top-5"
+      >
+        <IoArrowBackSharp size={35} className="text-[#175CD3]" />
       </Link>
       <img
         src={product.Image}
         alt=""
-        className="w-40 aspect-square border-2 border-gray-500  rounded-xl"
+        className="w-96 aspect-square rounded-xl"
       />
 
-      <div className="flex gap-2 justify-center items-center p-2 border-2 border-gray-500 rounded-lg text-white">
+      <div className="flex w-96 gap-2 justify-center items-center p-2 border-2 border-gray-500 rounded-lg text-black">
         <p>Current Stock :</p>
         <p>{product.Quantity}</p>
         <button className="btn btn-success">Edit</button>
       </div>
 
-      <div className="p-5 border-2 border-green-300 rounded-lg w-80 text-white">
+      <div className="p-5 w-96 border-2 border-gray-500 rounded-lg text-black">
         <p>Name : {product.Name}</p>
         <p>Category : {product.Category}</p>
         <p>Color : {product.Category ? product.Category : "Not Def"}</p>
