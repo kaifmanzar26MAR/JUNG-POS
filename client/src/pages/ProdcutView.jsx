@@ -9,6 +9,23 @@ const ProdcutView = () => {
   // console.log(_id);
 
   const [product, setProdcut] = useState({});
+  const [quantity, setQuantity]= useState(0)
+
+const updateProductQuantity= async()=>{
+  try {
+    const response= await axios.post("http://localhost:9000/api/jung/v1/products/updateproductquantity",{quantity:qty, product_id:_id},{withCredentials:true});
+
+  if(!response) throw new Error("Can't update Quantity!!")
+
+  console.log(response.data.data);
+
+  alert("quantity updated!!");
+  setQty(0)
+  fetchProdcutData();
+  } catch (error) {
+    
+  }
+}
 
   // http://localhost:9000/api/jung/v1/products/getproductbyid/663dfadfb3162e8be41281d0a
   const fetchProdcutData = async () => {
@@ -20,6 +37,8 @@ const ProdcutView = () => {
       if (!response) throw new Error("Cat get the response...");
       console.log(response.data.data);
       setProdcut(response.data.data);
+      setQuantity(Number(response.data.data.Quantity));
+      setQty(Number(response.data.data.Quantity));
     } catch (error) {
       // console.log(error);
     }
@@ -33,6 +52,20 @@ const ProdcutView = () => {
   }
 
   const [qty, setQty] = useState(0);
+
+
+  
+  useEffect(()=>{
+    
+    if(qty===0 || qty === Number(product.Quantity)) return;
+
+    let timmer= setTimeout(()=>{
+      console.log("hiii")
+      updateProductQuantity();
+    },1000)
+
+    return ()=> {clearTimeout(timmer)}
+  },[qty])
 
   return (
     <div className="bg-[#F9FDFF] w-full h-screen flex items-center justify-center flex-col gap-5">
