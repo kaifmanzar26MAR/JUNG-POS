@@ -141,14 +141,15 @@ const getAllColors= asyncHandler(async(req,res)=>{
   return res.status(200).json(new ApiResponse(201, allColors[0].allColors, "Got All Colors!!"))
 })
 
-
+// ######only for editing product data during development
 const updateNullCategoryToXYZ = async (req,res) => {
   try {
     // Update documents where Category is null to "xyz"
-    const result = await Product.deleteMany(
-      { Series: "AL" }
+    const result = await Product.updateMany(
+      {},
+      { $set: { Added_by: "6647400f2bb42da17174d474" } }
     );
-
+    
     console.log(`${result} documents updated.`);
     return res.status(200).json(result)
   } catch (error) {
@@ -179,4 +180,29 @@ const getTheFinalProductList= asyncHandler(async(req,res)=>{
   return res.status(200).json(new ApiResponse(201, productList,"Got the products Successfully!!"))
 })
 
-export { getAllCDProducts, addCDProduct, searchProduct, getProductById,getAllSeries, getAllCategoriesOfAseries, updateNullCategoryToXYZ, getAllColors ,getTheFinalProductList};
+const updateProductQuantity = asyncHandler(async (req, res) => {
+  const { quantity, product_id } = req.body;
+
+  if (quantity <= 0 || !product_id) {
+    throw new ApiError(400, "Quantity must be greater than 0 and product_id is required");
+  }
+
+  const product = await Product.findOne({ _id: product_id });
+
+  if (!product) {
+    throw new ApiError(404, "No product found");
+  }
+console.log(product)
+  product.Quantity = quantity;
+
+  const updated_product = await product.save();
+
+  if (!updated_product) {
+    throw new ApiError(500, "Something went wrong in updating product");
+  }
+
+  return res.status(200).json(new ApiResponse(200, updated_product, "Product updated"));
+});
+
+
+export { getAllCDProducts, addCDProduct,updateProductQuantity, searchProduct, getProductById,getAllSeries, getAllCategoriesOfAseries, updateNullCategoryToXYZ, getAllColors ,getTheFinalProductList};

@@ -29,6 +29,7 @@ const prodcutSchema=new Schema({
     Added_by:{
         type:Schema.Types.ObjectId,
         required:true,
+        ref:"User"
     },
     Series:{
         type:String,
