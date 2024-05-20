@@ -67,7 +67,7 @@ const Home = () => {
           type="text"
           value={text}
           onChange={(e) => setText(e.target.value)}
-          className="transition-all duration-500 m-5 p-2 border border-[#1849A8] rounded-lg w-60 text-black text-center"
+          className="transition-all duration-500 m-5 p-2 border-2 border-[#1849A8] rounded-lg w-60 text-black text-center"
           id="input"
           placeholder="Search Product"
         />
