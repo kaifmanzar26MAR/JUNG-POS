@@ -2,6 +2,7 @@ import React from 'react'
 import { Outlet } from 'react-router-dom';
 import Navbar from '../components/Navbar.jsx'
 import SearchBar from '../components/SearchBar.jsx';
+import Toaster from 'react-hot-toast';
 
 const Main = () => {
   return (
