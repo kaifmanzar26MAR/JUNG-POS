@@ -8,6 +8,7 @@ import Level1 from "../pages/Level1.jsx";
 import Level2 from "../pages/Level2.jsx";
 import Level3 from "../pages/Level3.jsx";
 import Level4 from "../pages/Level4.jsx";
+import EditProduct from "../pages/EditProduct.jsx";
 
 const router = createBrowserRouter([
     {
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
           element: <Login />
         }
       ]
+    },
+    {
+      path:"/select/:series/:category/:color/:_id/edit",
+      element:<EditProduct/>
     }
    
   ]);

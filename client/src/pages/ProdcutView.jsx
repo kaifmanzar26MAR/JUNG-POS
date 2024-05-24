@@ -77,10 +77,17 @@ const ProdcutView = () => {
             ? `/select/${series}/${category}/${color}`
             : "/"
         }
-        className="text-black absolute start-4 top-5"
+      className="text-black absolute start-4 top-5"
       >
         <IoArrowBackSharp size={35} className="text-[#175CD3]" />
       </Link>
+      <div className="flex w-full flex-row-reverse px-20">
+      <Link className="text-4xl w-30 h-30 px-2 py-2 bg-[#1470EF] rounded-md text-white font-bold"
+       to={
+         `/select/${series}/${category}/${color}/${_id}/edit`
+        }
+       >EDIT PRODUCT</Link>
+      </div>
       <img
         src={product.Image}
         alt=""
